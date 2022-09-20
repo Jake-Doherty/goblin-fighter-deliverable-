@@ -26,9 +26,82 @@
     <body>
         <header>
             <img class="logo" src="assets/html_css_js.png" alt="logo" />
-            <h1>Web App</h1>
+            <h1>Lego Harry Potter Creature Crush</h1>
         </header>
 
-        <main></main>
+        <main>
+            <section id="game-section">
+                <div id="game-container">
+                    <section id="player-section">
+                        <div id="scores-results-container">
+                            <p id="totals-score-message">
+                                You have played <span id="total"></span> and your score is:
+                                <span id="score">score</span>
+                            </p>
+                            <p id="battle-result-message">Click on a creature to get started!</p>
+                        </div>
+                        <img id="player-image" src="" alt="" />
+                        <button id="reset-game-button">Reset Game?</button>
+                    </section>
+                    <section id="creature-section">
+                        <form id="add-creature-form">
+                            <input type="text" placeholder="Give your opponent a name" required />
+                            <button>Create Creature</button>
+                        </form>
+                        <div id="creature-container">
+                            <h3>Crush These Creatures!</h3>
+                            <ul id="creatures-list">
+                                <li id="creature">
+                                    <span class="health"></span>
+                                    <img src="" alt="" class="creature-image" />
+                                    <span class="name">Spider</span>
+                                </li>
+                                <li id="creature">
+                                    <span class="health"></span>
+                                    <img src="" alt="" class="creature-image" />
+                                    <span class="name">Deatheater</span>
+                                </li>
+                                <li id="creature">
+                                    <span class="health"></span>
+                                    <img src="" alt="" class="creature-image" />
+                                    <span class="name">Warewolf</span>
+                                </li>
+                                <li id="creature">
+                                    <span class="health"></span>
+                                    <img src="" alt="" class="creature-image" />
+                                    <span class="name">Basilisk</span>
+                                </li>
+                            </ul>
+                            <button id="remove-dead-creatures-button">
+                                Remove Defeated Creatures?
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <a href="https://www.flaticon.com/free-icons/cloak" title="cloak icons"
+                >Cloak icons created by Icongeek26 - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/harry-potter" title="harry potter icons"
+                >Harry potter icons created by Smashicons - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/harry-potter" title="harry potter icons"
+                >Harry potter icons created by Roundicons - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/spider" title="spider icons"
+                >Spider icons created by Smashicons - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/werewolf" title="werewolf icons"
+                >Werewolf icons created by BZZRINCANTATION - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/fantasy" title="fantasy icons"
+                >Fantasy icons created by Icongeek26 - Flaticon</a
+            >
+            <a href="https://www.flaticon.com/free-icons/fantasy" title="fantasy icons"
+                >Fantasy icons created by Icongeek26 - Flaticon</a
+            >
+        </footer>
     </body>
 </html>
