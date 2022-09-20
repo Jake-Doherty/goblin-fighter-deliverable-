@@ -25,59 +25,61 @@
 
     <body>
         <header>
-            <img class="logo" src="assets/html_css_js.png" alt="logo" />
-            <h1>Lego Harry Potter Creature Crush</h1>
+            <img class="logo" src="assets\Harry_Potter_wordmark.svg" alt="logo" />
+            <h1>Creature Crush</h1>
         </header>
 
         <main>
             <section id="game-section">
-                <div id="game-container">
-                    <section id="player-section">
-                        <div id="scores-results-container">
-                            <p id="totals-score-message">
-                                You have played <span id="total"></span> and your score is:
-                                <span id="score">score</span>
-                            </p>
-                            <p id="battle-result-message">Click on a creature to get started!</p>
-                        </div>
-                        <img id="player-image" src="" alt="" />
-                        <button id="reset-game-button">Reset Game?</button>
-                    </section>
-                    <section id="creature-section">
+                <section id="player-section">
+                    <div id="scores-results-container">
+                        <p id="totals-score-message">
+                            You have played <span id="total"></span> and your score is:
+                            <span id="score">score</span>
+                        </p>
+                        <p id="battle-result-message">Click on a creature to get started!</p>
+                    </div>
+                    <p id="harry-potter-health-points">HPHP: <span id="hphp-span"></span></p>
+                    <img id="player-image" src="assets\harry-potter (1).png" alt="" />
+                    <button id="reset-game-button">Reset Game?</button>
+                </section>
+                <section id="creature-section">
+                    <label>
+                        Build-a-Creature
                         <form id="add-creature-form">
                             <input type="text" placeholder="Give your opponent a name" required />
-                            <button>Create Creature</button>
+                            <button>+</button>
                         </form>
-                        <div id="creature-container">
-                            <h3>Crush These Creatures!</h3>
-                            <ul id="creatures-list">
-                                <li id="creature">
-                                    <span class="health"></span>
-                                    <img src="" alt="" class="creature-image" />
-                                    <span class="name">Spider</span>
-                                </li>
-                                <li id="creature">
-                                    <span class="health"></span>
-                                    <img src="" alt="" class="creature-image" />
-                                    <span class="name">Deatheater</span>
-                                </li>
-                                <li id="creature">
-                                    <span class="health"></span>
-                                    <img src="" alt="" class="creature-image" />
-                                    <span class="name">Warewolf</span>
-                                </li>
-                                <li id="creature">
-                                    <span class="health"></span>
-                                    <img src="" alt="" class="creature-image" />
-                                    <span class="name">Basilisk</span>
-                                </li>
-                            </ul>
-                            <button id="remove-dead-creatures-button">
-                                Remove Defeated Creatures?
-                            </button>
-                        </div>
-                    </section>
-                </div>
+                    </label>
+                    <div id="creature-container">
+                        <h3>Crush These Creatures!</h3>
+                        <button id="remove-dead-creatures-button">
+                            Remove Defeated Creatures?
+                        </button>
+                        <ul id="creatures-list">
+                            <li id="creature">
+                                <span class="health">6</span>
+                                <img src="assets\spider.png" alt="" class="creature-image" />
+                                <span class="name">Spider</span>
+                            </li>
+                            <li id="creature">
+                                <span class="health">5</span>
+                                <img src="assets\zombie.png" alt="" class="creature-image" />
+                                <span class="name">Zombie</span>
+                            </li>
+                            <li id="creature">
+                                <span class="health">4</span>
+                                <img src="assets\werewolf.png" alt="" class="creature-image" />
+                                <span class="name">Warewolf</span>
+                            </li>
+                            <li id="creature">
+                                <span class="health">3</span>
+                                <img src="assets\dragon.png" alt="" class="creature-image" />
+                                <span class="name">Dragon</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </section>
         </main>
         <footer>
