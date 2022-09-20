@@ -82,9 +82,12 @@ footer > a {
 }
 
 #player-image {
-    width: 200px;
-    box-shadow: 2px 4px 5px 2px black;
+    width: 150px;
     border-radius: 50%;
+}
+
+#player-image:hover {
+    box-shadow: 2px 4px 5px 2px black;
 }
 
 #reset-game-button {
