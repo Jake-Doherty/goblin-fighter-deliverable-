@@ -44,6 +44,7 @@ footer > a {
 
 /*                                  player section styling                                   */
 #player-section {
+    height: 416px;
     display: grid;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), purple);
     justify-items: center;
