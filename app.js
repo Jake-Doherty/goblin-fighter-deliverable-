@@ -23,50 +23,50 @@ let creatures = [
     {
         name: 'Norbert',
         type: 'dragon',
-        hp: 6,
+        hp: 7,
         xpValue: 100,
     },
     {
         name: 'Aragog',
         type: 'spider',
-        hp: 5,
+        hp: 6,
         xpValue: 75,
     },
     {
         name: 'Fenrir',
         type: 'werewolf',
-        hp: 4,
+        hp: 5,
         xpValue: 50,
     },
     {
         name: 'Inferi',
         type: 'inferi',
-        hp: 0,
+        hp: 4,
         xpValue: 25,
     },
 ];
 
 const dragon = {
     type: 'dragon',
-    hp: 6,
+    hp: 7,
     xpValue: 100,
 };
 
 const spider = {
     type: 'spider',
-    hp: 5,
+    hp: 6,
     xpValue: 75,
 };
 
 const werewolf = {
     type: 'werewolf',
-    hp: 4,
+    hp: 5,
     xpValue: 50,
 };
 
 const inferi = {
     type: 'inferi',
-    hp: 3,
+    hp: 4,
     xpValue: 25,
 };
 
