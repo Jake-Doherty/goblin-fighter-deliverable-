@@ -1,6 +1,7 @@
 /* Imports */
 
 import { renderCreature } from './render-creature.js';
+import { getRandomItem } from './utils.js';
 
 /* Get DOM Elements */
 const harryHp = document.getElementById('hphp-span');
@@ -9,18 +10,43 @@ const battleMessage = document.getElementById('battle-result-message');
 const creaturesCrushed = document.getElementById('creatures-crushed');
 const score = document.getElementById('score');
 const creatureList = document.getElementById('creatures-list');
+const resetGame = document.getElementById('reset-game-button');
 
 /* State */
-let playerHealth = 100;
+let playerHealth = 0;
 let result = 'Click on a creature to get started!';
-let totalCreaturesCrushed = 5;
-let playerScore = 10000;
+let totalCreaturesCrushed = 0;
+let playerScore = 0;
 let creatures = [
-    { name: 'Norbert', type: 'dragon', hp: 6 },
-    { name: 'Aragog', type: 'spider', hp: 5 },
-    { name: 'Fenrir', type: 'werewolf', hp: 4 },
-    { name: 'Inferi', type: 'inferi', hp: 0 },
+    {
+        name: 'Norbert',
+        type: 'dragon',
+        hp: 6,
+        xpValue: 100,
+    },
+    {
+        name: 'Aragog',
+        type: 'spider',
+        hp: 5,
+        xpValue: 75,
+    },
+    {
+        name: 'Fenrir',
+        type: 'werewolf',
+        hp: 4,
+        xpValue: 50,
+    },
+    {
+        name: 'Inferi',
+        type: 'inferi',
+        hp: 0,
+        xpValue: 25,
+    },
 ];
+
+// Probability Arrays
+const userAttacks = [0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 7];
+const creatureAttacks = [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5];
 
 /* Events */
 
@@ -38,8 +64,10 @@ function displayPlayer() {
     harryHp.textContent = playerHealth;
     if (playerHealth < 1) {
         playerImage.src = 'assets/ghost.png';
+        resetGame.classList.remove('hidden');
     } else {
         playerImage.src = 'assets/harry-potter-round.png';
+        resetGame.classList.add('hidden');
     }
 }
 
@@ -48,10 +76,44 @@ function displayCreatures() {
 
     for (const creature of creatures) {
         const creatureEl = renderCreature(creature);
+        creatureList.append(creatureEl);
 
         // put event listener in here
+        creatureEl.addEventListener('click', () => {
+            if (creature.hp < 1) {
+                result = `They've passed through the veil, you can't hurt them anymore you MONSTER!`;
+                displayResults();
+                return;
+            }
 
-        creatureList.append(creatureEl);
+            const userAttack = getRandomItem(userAttacks);
+            const creatureAttack = getRandomItem(creatureAttacks);
+
+            playerHealth = Math.max(0, playerHealth - creatureAttack);
+            creature.hp = Math.max(0, creature.hp - userAttack);
+
+            result = '';
+            if (userAttack === 0) {
+                result += 'You missed!';
+            } else {
+                result += `You hit ${creature.name} for ${userAttack}`;
+            }
+
+            if (creatureAttack === 0) {
+                result += `${creature.name} missed!`;
+            } else {
+                result += `${creature.name} hit you for ${creatureAttack}`;
+            }
+
+            if (creature.hp < 1) {
+                totalCreaturesCrushed++;
+                displayScoreboard();
+            }
+
+            displayResults();
+            displayPlayer();
+            displayCreatures();
+        });
     }
 }
 
