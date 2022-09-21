@@ -11,9 +11,10 @@ const creaturesCrushed = document.getElementById('creatures-crushed');
 const score = document.getElementById('score');
 const creatureList = document.getElementById('creatures-list');
 const resetGame = document.getElementById('reset-game-button');
+const addCreatureForm = document.getElementById('add-creature-form');
 
 /* State */
-let playerHealth = 0;
+let playerHealth = 100;
 let result = 'Click on a creature to get started!';
 let totalCreaturesCrushed = 0;
 let playerScore = 0;
@@ -44,11 +45,68 @@ let creatures = [
     },
 ];
 
+const dragon = {
+    type: 'dragon',
+    hp: 6,
+    xpValue: 100,
+};
+
+const spider = {
+    type: 'spider',
+    hp: 5,
+    xpValue: 75,
+};
+
+const werewolf = {
+    type: 'werewolf',
+    hp: 4,
+    xpValue: 50,
+};
+
+const inferi = {
+    type: 'inferi',
+    hp: 3,
+    xpValue: 25,
+};
+
 // Probability Arrays
 const userAttacks = [0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 7];
 const creatureAttacks = [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5];
+const creatureArray = [
+    inferi,
+    inferi,
+    inferi,
+    inferi,
+    werewolf,
+    werewolf,
+    werewolf,
+    spider,
+    spider,
+    dragon,
+];
 
 /* Events */
+addCreatureForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(addCreatureForm);
+    const creatureType = getRandomItem(creatureArray);
+
+    const creature = {
+        name: formData.get('name'),
+        type: creatureType.type,
+        hp: creatureType.hp,
+        xpValue: creatureType.xpValue,
+    };
+
+    creatures.push(creature);
+
+    result = `${creature.name} the ${creature.type} has joined the fray!`;
+
+    displayCreatures();
+    displayResults();
+
+    addCreatureForm.reset();
+});
 
 /* Display Functions */
 function displayScoreboard() {
