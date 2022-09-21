@@ -12,6 +12,7 @@ const score = document.getElementById('score');
 const creatureList = document.getElementById('creatures-list');
 const resetGame = document.getElementById('reset-game-button');
 const addCreatureForm = document.getElementById('add-creature-form');
+const removeDeadCreatureButton = document.getElementById('remove-dead-creatures-button');
 
 /* State */
 let playerHealth = 100;
@@ -108,6 +109,17 @@ addCreatureForm.addEventListener('submit', (e) => {
     addCreatureForm.reset();
 });
 
+removeDeadCreatureButton.addEventListener('click', () => {
+    const stillFighting = [];
+    for (const creature of creatures) {
+        if (creature.hp > 0) {
+            stillFighting.push(creature);
+        }
+    }
+    creatures = stillFighting;
+    displayCreatures();
+});
+
 /* Display Functions */
 function displayScoreboard() {
     creaturesCrushed.textContent = totalCreaturesCrushed;
@@ -152,19 +164,23 @@ function displayCreatures() {
 
             result = '';
             if (userAttack === 0) {
-                result += 'You missed!';
+                result += 'You missed! ';
+            } else if (userAttack === 7) {
+                result += `critical hit on ${creature.name} for ${userAttack} damage!!! `;
             } else {
-                result += `You hit ${creature.name} for ${userAttack}`;
+                result += `You hit ${creature.name} for ${userAttack} damage. `;
             }
 
             if (creatureAttack === 0) {
-                result += `${creature.name} missed!`;
+                result += `${creature.name} missed! `;
             } else {
-                result += `${creature.name} hit you for ${creatureAttack}`;
+                result += `${creature.name} hit you for ${creatureAttack} damage. `;
             }
 
             if (creature.hp < 1) {
                 totalCreaturesCrushed++;
+                playerScore += creature.xpValue;
+                score.textContent = playerScore;
                 displayScoreboard();
             }
 
@@ -177,6 +193,5 @@ function displayCreatures() {
 
 // (don't forget to call any display functions you want to run on page load!)
 displayPlayer();
-displayResults();
-displayScoreboard();
 displayCreatures();
+displayResults();
