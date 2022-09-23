@@ -151,7 +151,12 @@ function displayCreatures() {
         // put event listener in here
         creatureEl.addEventListener('click', () => {
             if (creature.hp < 1) {
-                result = `They've passed through the veil, you can't hurt them anymore you MONSTER!`;
+                result = `${creature.name} has passed through the veil, you can't hurt them anymore you MONSTER!`;
+                displayResults();
+                return;
+            }
+            if (playerHealth < 1) {
+                result = `You're dead! Click 'Reset Game' to keep playing!`;
                 displayResults();
                 return;
             }
