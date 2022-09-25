@@ -6,7 +6,7 @@ main {
     background-color: black;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
 }
 
 footer {
@@ -47,7 +47,7 @@ footer > a {
 
 /*                                  player section styling                                   */
 #player-section {
-    height: 416px;
+    height: fit-content;
     width: 350px;
     display: grid;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), purple);
@@ -86,6 +86,7 @@ footer > a {
 }
 
 #player-image {
+    margin-bottom: 10px;
     width: 150px;
     border-radius: 50%;
 }

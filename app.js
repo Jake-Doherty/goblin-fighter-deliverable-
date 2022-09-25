@@ -1,7 +1,7 @@
 /* Imports */
 
 import { renderCreature } from './render-creature.js';
-import { getRandomItem } from './utils.js';
+import { getRandomItem, getRandomNumber } from './utils.js';
 
 /* Get DOM Elements */
 const harryHp = document.getElementById('hphp-span');
@@ -21,30 +21,30 @@ let result = 'Click on a creature to get started!';
 let totalCreaturesCrushed = 0;
 let playerScore = 0;
 let creatures = [
-    {
-        name: 'Norbert',
-        type: 'dragon',
-        hp: 8,
-        xpValue: 100,
-    },
-    {
-        name: 'Aragog',
-        type: 'spider',
-        hp: 7,
-        xpValue: 75,
-    },
-    {
-        name: 'Fenrir',
-        type: 'werewolf',
-        hp: 6,
-        xpValue: 50,
-    },
-    {
-        name: 'Inferi',
-        type: 'inferi',
-        hp: 5,
-        xpValue: 25,
-    },
+    // {
+    //     name: 'Norbert',
+    //     type: 'dragon',
+    //     hp: 8,
+    //     xpValue: 100,
+    // },
+    // {
+    //     name: 'Aragog',
+    //     type: 'spider',
+    //     hp: 7,
+    //     xpValue: 75,
+    // },
+    // {
+    //     name: 'Fenrir',
+    //     type: 'werewolf',
+    //     hp: 6,
+    //     xpValue: 50,
+    // },
+    // {
+    //     name: 'Inferi',
+    //     type: 'inferi',
+    //     hp: 5,
+    //     xpValue: 25,
+    // },
 ];
 
 const dragon = {
@@ -91,7 +91,8 @@ const creatureArray = [
 enterDungeonButton.addEventListener('click', () => {
     creatureList.innerHTML = '';
 
-    const creatureType = getRandomItem(creatureArray);
+    result = '';
+
     const creatureNameArray = [
         'Horace',
         'Hamish',
@@ -120,24 +121,134 @@ enterDungeonButton.addEventListener('click', () => {
         'Penelope',
         'Jada',
     ];
-    const creatureName = getRandomItem(creatureNameArray);
 
-    // declare creature variable assigning creatureType result data to object key:'value' pairs
-    const creature = {
-        // assign name key a value of the input from add creature form
-        name: creatureName,
-        type: creatureType.type,
-        hp: creatureType.hp,
-        xpValue: creatureType.xpValue,
-    };
+    function displayFirstCreature() {
+        const creatureType = getRandomItem(creatureArray);
+        const creatureName = getRandomItem(creatureNameArray);
 
-    // push new creature onto creatures array
-    creatures.push(creature);
+        // declare creature variable assigning creatureType result data to object key:'value' pairs
+        const creature = {
+            // assign name key a value of the input from add creature form
+            name: creatureName,
+            type: creatureType.type,
+            hp: creatureType.hp,
+            xpValue: creatureType.xpValue,
+        };
 
-    result = `${creature.name} the ${creature.type} has joined the fray!`;
+        console.log(creature);
 
+        // push new creature onto creatures array
+        creatures.push(creature);
+
+        result += ` ${creature.name} the ${creature.type} has joined the fray!`;
+    }
+    function displaySecondCreature() {
+        const creatureType = getRandomItem(creatureArray);
+        const creatureName = getRandomItem(creatureNameArray);
+
+        // declare creature variable assigning creatureType result data to object key:'value' pairs
+        const creature = {
+            // assign name key a value of the input from add creature form
+            name: creatureName,
+            type: creatureType.type,
+            hp: creatureType.hp,
+            xpValue: creatureType.xpValue,
+        };
+
+        console.log(creature);
+
+        // push new creature onto creatures array
+        creatures.push(creature);
+
+        result += ` ${creature.name} the ${creature.type} has joined the fray!`;
+    }
+    function displayThirdCreature() {
+        const creatureType = getRandomItem(creatureArray);
+        const creatureName = getRandomItem(creatureNameArray);
+
+        // declare creature variable assigning creatureType result data to object key:'value' pairs
+        const creature = {
+            // assign name key a value of the input from add creature form
+            name: creatureName,
+            type: creatureType.type,
+            hp: creatureType.hp,
+            xpValue: creatureType.xpValue,
+        };
+
+        console.log(creature);
+
+        // push new creature onto creatures array
+        creatures.push(creature);
+
+        result += ` ${creature.name} the ${creature.type} has joined the fray!`;
+    }
+    function displayFourthCreature() {
+        const creatureType = getRandomItem(creatureArray);
+        const creatureName = getRandomItem(creatureNameArray);
+
+        // declare creature variable assigning creatureType result data to object key:'value' pairs
+        const creature = {
+            // assign name key a value of the input from add creature form
+            name: creatureName,
+            type: creatureType.type,
+            hp: creatureType.hp,
+            xpValue: creatureType.xpValue,
+        };
+
+        // push new creature onto creatures array
+        creatures.push(creature);
+
+        result += ` ${creature.name} the ${creature.type} has joined the fray!`;
+    }
+    function displayFifthCreature() {
+        const creatureType = getRandomItem(creatureArray);
+        const creatureName = getRandomItem(creatureNameArray);
+
+        // declare creature variable assigning creatureType result data to object key:'value' pairs
+        const creature = {
+            // assign name key a value of the input from add creature form
+            name: creatureName,
+            type: creatureType.type,
+            hp: creatureType.hp,
+            xpValue: creatureType.xpValue,
+        };
+
+        console.log(creature);
+
+        // push new creature onto creatures array
+        creatures.push(creature);
+
+        result += ` ${creature.name} the ${creature.type} has joined the fray!`;
+    }
+
+    const arrayOfFunc = [
+        [displayFirstCreature, displaySecondCreature, displayThirdCreature],
+        [displayFirstCreature, displaySecondCreature, displayThirdCreature, displayFourthCreature],
+        [displayFirstCreature, displaySecondCreature, displayThirdCreature, displayFourthCreature],
+        [displayFirstCreature, displaySecondCreature, displayThirdCreature, displayFourthCreature],
+        [
+            displayFirstCreature,
+            displaySecondCreature,
+            displayThirdCreature,
+            displayFourthCreature,
+            displayFifthCreature,
+        ],
+    ];
+
+    let dungeonChoice = getRandomItem(arrayOfFunc);
+
+    function displayDungeon() {
+        for (let i = 0; i < dungeonChoice.length; i++) {
+            dungeonChoice[i]();
+        }
+    }
+
+    // displayFirstCreature();
+    displayDungeon();
     displayCreatures();
     displayResults();
+
+    // return dungeon;
 });
 
 addCreatureForm.addEventListener('submit', (e) => {
