@@ -132,6 +132,10 @@ function displayResults() {
 
 function displayPlayer() {
     harryHp.textContent = playerHealth;
+    if (totalCreaturesCrushed >= 5 && totalCreaturesCrushed % 10 === 0) {
+        playerHealth = 100;
+        harryHp.textContent = playerHealth;
+    }
     if (playerHealth < 1) {
         playerImage.src = 'assets/ghost.png';
         resetGame.classList.remove('hidden');
