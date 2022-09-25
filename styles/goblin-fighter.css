@@ -39,11 +39,10 @@ footer > a {
     width: fit-content;
     padding: 10px;
     background-color: black;
-    box-shadow: 0px 0px 20px 1px whitesmoke;
     border-radius: 5px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 20px;
 }
 
 /*                                  player section styling                                   */
@@ -55,7 +54,7 @@ footer > a {
     justify-items: center;
     border-radius: 5px;
     gap: 5px;
-    box-shadow: inset 0px 0px 6px 2px black;
+    box-shadow: inset 0px 0px 6px 2px black, 0px 0px 10px 1px whitesmoke;
 }
 
 #scores-results-container {
@@ -112,19 +111,20 @@ footer > a {
 
 /* creature section styling */
 #creature-section {
-    height: 416px;
+    width: 350px;
     display: grid;
-    grid-template-rows: 75px 1fr;
-    gap: 10px;
+    gap: 5px;
+    grid-template-rows: auto 1fr;
     background: linear-gradient(-135deg, rgba(0, 0, 0, 0.8), purple);
     border-radius: 5px;
     justify-items: center;
     align-items: center;
-    box-shadow: inset 0px 0px 6px 2px black;
+    box-shadow: inset 0px 0px 6px 2px black, 0px 0px 10px 1px whitesmoke;
     overflow: auto;
 }
 
 label {
+    margin-top: 10px;
     width: fit-content;
     border-top: 2px solid rgb(170, 111, 0);
     border-left: 2px solid rgb(170, 111, 0);
@@ -155,16 +155,27 @@ label {
     cursor: pointer;
 }
 
+#add-creature-section {
+    margin-top: 5px;
+    display: grid;
+    gap: 5px;
+}
+
 #creature-container {
-    margin-top: -20px;
+    margin-bottom: 10px;
+    display: grid;
+    width: 80%;
+    gap: 5px;
 }
 
 #creature-container h3 {
+    margin: 0;
     padding: 3px;
     border-radius: 3px;
     border: 5px solid black;
     background-color: purple;
     color: orange;
+    text-align: center;
 }
 
 #remove-dead-creatures-button {
@@ -183,9 +194,25 @@ label {
     cursor: pointer;
 }
 
+#enter-dungeon-button {
+    width: 200px;
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
+#enter-dungeon-button:hover {
+    border: 2px solid rgb(65, 0, 65);
+    background-color: rgb(170, 111, 0);
+    color: rgb(65, 0, 65);
+    box-shadow: 0px 0px 6px 2px black;
+    cursor: pointer;
+}
+
 ul {
+    margin-left: 10px;
     width: 100%;
-    margin: 10px;
     display: grid;
     gap: 5px;
 }

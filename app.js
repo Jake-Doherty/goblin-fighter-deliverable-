@@ -13,6 +13,7 @@ const creatureList = document.getElementById('creatures-list');
 const resetGame = document.getElementById('reset-game-button');
 const addCreatureForm = document.getElementById('add-creature-form');
 const removeDeadCreatureButton = document.getElementById('remove-dead-creatures-button');
+const enterDungeonButton = document.getElementById('enter-dungeon-button');
 
 /* State */
 let playerHealth = 100;
@@ -23,56 +24,56 @@ let creatures = [
     {
         name: 'Norbert',
         type: 'dragon',
-        hp: 7,
+        hp: 8,
         xpValue: 100,
     },
     {
         name: 'Aragog',
         type: 'spider',
-        hp: 6,
+        hp: 7,
         xpValue: 75,
     },
     {
         name: 'Fenrir',
         type: 'werewolf',
-        hp: 5,
+        hp: 6,
         xpValue: 50,
     },
     {
         name: 'Inferi',
         type: 'inferi',
-        hp: 4,
+        hp: 5,
         xpValue: 25,
     },
 ];
 
 const dragon = {
     type: 'dragon',
-    hp: 7,
+    hp: 8,
     xpValue: 100,
 };
 
 const spider = {
     type: 'spider',
-    hp: 6,
+    hp: 7,
     xpValue: 75,
 };
 
 const werewolf = {
     type: 'werewolf',
-    hp: 5,
+    hp: 6,
     xpValue: 50,
 };
 
 const inferi = {
     type: 'inferi',
-    hp: 4,
+    hp: 5,
     xpValue: 25,
 };
 
 // Probability Arrays
-const userAttacks = [0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 7];
-const creatureAttacks = [0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 4, 4, 5];
+const userAttacks = [0, 0, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 7];
+const creatureAttacks = [0, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 7];
 const creatureArray = [
     inferi,
     inferi,
@@ -87,18 +88,76 @@ const creatureArray = [
 ];
 
 /* Events */
+enterDungeonButton.addEventListener('click', () => {
+    creatureList.innerHTML = '';
+
+    const creatureType = getRandomItem(creatureArray);
+    const creatureNameArray = [
+        'Horace',
+        'Hamish',
+        'Malcolm',
+        'Sanford',
+        'Christian',
+        'Gerard',
+        'Brennan',
+        'Jason',
+        'Amina',
+        'Chauncy',
+        'Leta',
+        'Orla',
+        'Mandy',
+        'James',
+        'Grim',
+        'Declan',
+        'Elizabeth',
+        'Kaori',
+        'Lynette',
+        'Scott',
+        'Takashi',
+        'Bhavana',
+        'Trevor',
+        'Cho',
+        'Penelope',
+        'Jada',
+    ];
+    const creatureName = getRandomItem(creatureNameArray);
+
+    // declare creature variable assigning creatureType result data to object key:'value' pairs
+    const creature = {
+        // assign name key a value of the input from add creature form
+        name: creatureName,
+        type: creatureType.type,
+        hp: creatureType.hp,
+        xpValue: creatureType.xpValue,
+    };
+
+    // push new creature onto creatures array
+    creatures.push(creature);
+
+    result = `${creature.name} the ${creature.type} has joined the fray!`;
+
+    displayCreatures();
+    displayResults();
+});
+
 addCreatureForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    // create new form data variable from add creature form
     const formData = new FormData(addCreatureForm);
+
+    // get random creature from creature array and assign object data to creatureType variable
     const creatureType = getRandomItem(creatureArray);
 
+    // declare creature variable assigning creatureType result data to object key:'value' pairs
     const creature = {
+        // assign name key a value of the input from add creature form
         name: formData.get('name'),
         type: creatureType.type,
         hp: creatureType.hp,
         xpValue: creatureType.xpValue,
     };
 
+    // push new creature onto creatures array
     creatures.push(creature);
 
     result = `${creature.name} the ${creature.type} has joined the fray!`;
@@ -132,7 +191,7 @@ function displayResults() {
 
 function displayPlayer() {
     harryHp.textContent = playerHealth;
-    if (totalCreaturesCrushed >= 5 && totalCreaturesCrushed % 10 === 0) {
+    if (totalCreaturesCrushed % 10 === 0) {
         playerHealth = 100;
         harryHp.textContent = playerHealth;
     }
@@ -152,7 +211,7 @@ function displayCreatures() {
         const creatureEl = renderCreature(creature);
         creatureList.append(creatureEl);
 
-        // put event listener in here
+        // put event listener in here to make each creature have an event listener when generated
         creatureEl.addEventListener('click', () => {
             if (creature.hp < 1) {
                 result = `${creature.name} has passed through the veil, you can't hurt them anymore you MONSTER!`;
@@ -182,6 +241,8 @@ function displayCreatures() {
 
             if (creatureAttack === 0) {
                 result += `${creature.name} missed! `;
+            } else if (creatureAttack === 7) {
+                result += `${creature.name} got a critical hit on you for ${creatureAttack} damage!!! `;
             } else {
                 result += `${creature.name} hit you for ${creatureAttack} damage. `;
             }
