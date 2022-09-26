@@ -110,6 +110,36 @@ footer > a {
     cursor: pointer;
 }
 
+#slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 5px; /* Specified height */
+    background: #474747; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+    transition: opacity 0.2s;
+}
+
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -2px;
+    width: 5px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: rgb(170, 111, 0); /* orange button background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+#slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+#audio-controls {
+    margin-bottom: 10px;
+}
+
 /* creature section styling */
 #creature-section {
     width: 350px;

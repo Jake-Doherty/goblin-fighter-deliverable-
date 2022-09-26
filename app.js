@@ -1,7 +1,7 @@
 /* Imports */
 
 import { renderCreature } from './render-creature.js';
-import { getRandomItem, getRandomNumber } from './utils.js';
+import { getRandomItem } from './utils.js';
 
 /* Get DOM Elements */
 const harryHp = document.getElementById('hphp-span');
@@ -14,6 +14,24 @@ const resetGame = document.getElementById('reset-game-button');
 const addCreatureForm = document.getElementById('add-creature-form');
 const removeDeadCreatureButton = document.getElementById('remove-dead-creatures-button');
 const enterDungeonButton = document.getElementById('enter-dungeon-button');
+const audioSlider = document.getElementById('slider');
+const themeSong = new Audio('assets/theme-song.mp3');
+const creatureDeathSound = new Audio('assets/male_hurt7-48124.mp3');
+const enterDungeonSound = new Audio('assets/entered-dungeon-sound.mp3');
+
+/*  audio slider stuff  */
+themeSong.play();
+themeSong.loop = true;
+themeSong.volume = 0.15;
+creatureDeathSound.volume = 0.05;
+enterDungeonSound.volume = 0.1;
+
+audioSlider.min = 0;
+audioSlider.max = 100;
+
+audioSlider.oninput = () => {
+    themeSong.volume = audioSlider.value / 100;
+};
 
 /* State */
 let playerHealth = 100;
@@ -21,30 +39,30 @@ let result = 'Click on a creature to get started!';
 let totalCreaturesCrushed = 0;
 let playerScore = 0;
 let creatures = [
-    // {
-    //     name: 'Norbert',
-    //     type: 'dragon',
-    //     hp: 8,
-    //     xpValue: 100,
-    // },
-    // {
-    //     name: 'Aragog',
-    //     type: 'spider',
-    //     hp: 7,
-    //     xpValue: 75,
-    // },
-    // {
-    //     name: 'Fenrir',
-    //     type: 'werewolf',
-    //     hp: 6,
-    //     xpValue: 50,
-    // },
-    // {
-    //     name: 'Inferi',
-    //     type: 'inferi',
-    //     hp: 5,
-    //     xpValue: 25,
-    // },
+    {
+        name: 'Norbert',
+        type: 'dragon',
+        hp: 8,
+        xpValue: 100,
+    },
+    {
+        name: 'Aragog',
+        type: 'spider',
+        hp: 7,
+        xpValue: 75,
+    },
+    {
+        name: 'Fenrir',
+        type: 'werewolf',
+        hp: 6,
+        xpValue: 50,
+    },
+    {
+        name: 'Inferi',
+        type: 'inferi',
+        hp: 5,
+        xpValue: 25,
+    },
 ];
 
 const dragon = {
@@ -88,8 +106,11 @@ const creatureArray = [
 ];
 
 /* Events */
+
 enterDungeonButton.addEventListener('click', () => {
     creatureList.innerHTML = '';
+
+    enterDungeonSound.play();
 
     result = '';
 
@@ -135,13 +156,12 @@ enterDungeonButton.addEventListener('click', () => {
             xpValue: creatureType.xpValue,
         };
 
-        console.log(creature);
-
         // push new creature onto creatures array
         creatures.push(creature);
 
         result += ` ${creature.name} the ${creature.type} has joined the fray!`;
     }
+
     function displaySecondCreature() {
         const creatureType = getRandomItem(creatureArray);
         const creatureName = getRandomItem(creatureNameArray);
@@ -155,13 +175,12 @@ enterDungeonButton.addEventListener('click', () => {
             xpValue: creatureType.xpValue,
         };
 
-        console.log(creature);
-
         // push new creature onto creatures array
         creatures.push(creature);
 
         result += ` ${creature.name} the ${creature.type} has joined the fray!`;
     }
+
     function displayThirdCreature() {
         const creatureType = getRandomItem(creatureArray);
         const creatureName = getRandomItem(creatureNameArray);
@@ -175,13 +194,12 @@ enterDungeonButton.addEventListener('click', () => {
             xpValue: creatureType.xpValue,
         };
 
-        console.log(creature);
-
         // push new creature onto creatures array
         creatures.push(creature);
 
         result += ` ${creature.name} the ${creature.type} has joined the fray!`;
     }
+
     function displayFourthCreature() {
         const creatureType = getRandomItem(creatureArray);
         const creatureName = getRandomItem(creatureNameArray);
@@ -200,6 +218,7 @@ enterDungeonButton.addEventListener('click', () => {
 
         result += ` ${creature.name} the ${creature.type} has joined the fray!`;
     }
+
     function displayFifthCreature() {
         const creatureType = getRandomItem(creatureArray);
         const creatureName = getRandomItem(creatureNameArray);
@@ -213,14 +232,13 @@ enterDungeonButton.addEventListener('click', () => {
             xpValue: creatureType.xpValue,
         };
 
-        console.log(creature);
-
         // push new creature onto creatures array
         creatures.push(creature);
 
         result += ` ${creature.name} the ${creature.type} has joined the fray!`;
     }
 
+    // array of array of functions
     const arrayOfFunc = [
         [displayFirstCreature, displaySecondCreature, displayThirdCreature],
         [displayFirstCreature, displaySecondCreature, displayThirdCreature, displayFourthCreature],
@@ -235,20 +253,16 @@ enterDungeonButton.addEventListener('click', () => {
         ],
     ];
 
+    // assign random array choice from function array of arrays
     let dungeonChoice = getRandomItem(arrayOfFunc);
 
-    function displayDungeon() {
-        for (let i = 0; i < dungeonChoice.length; i++) {
-            dungeonChoice[i]();
-        }
+    // iterate through dungeon choice and call/execute functions within
+    for (let i = 0; i < dungeonChoice.length; i++) {
+        dungeonChoice[i]();
     }
 
-    // displayFirstCreature();
-    displayDungeon();
     displayCreatures();
     displayResults();
-
-    // return dungeon;
 });
 
 addCreatureForm.addEventListener('submit', (e) => {
@@ -309,6 +323,7 @@ function displayPlayer() {
     if (playerHealth < 1) {
         playerImage.src = 'assets/ghost.png';
         resetGame.classList.remove('hidden');
+        creatureDeathSound.play();
     } else {
         playerImage.src = 'assets/harry-potter-round.png';
         resetGame.classList.add('hidden');
@@ -359,6 +374,7 @@ function displayCreatures() {
             }
 
             if (creature.hp < 1) {
+                creatureDeathSound.play();
                 totalCreaturesCrushed++;
                 playerScore += creature.xpValue;
                 score.textContent = playerScore;

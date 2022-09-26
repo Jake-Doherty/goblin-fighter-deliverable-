@@ -14,3 +14,6 @@
     >Fantasy icons created by Icongeek26 - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/fantasy" title="fantasy icons"
     >Fantasy icons created by Icongeek26 - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/video" title="video icons">Video icons created by Bingge Liu - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/pause" title="pause icons">Pause icons created by bqlqn - Flaticon</a>
+Sound Effect from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=48124">Pixabay</a>
