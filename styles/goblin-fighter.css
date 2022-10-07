@@ -81,10 +81,6 @@ footer > a {
     color: orange;
 }
 
-#reset-game-button {
-    margin: 10px auto;
-}
-
 #player-image {
     margin-bottom: 10px;
     width: 150px;
@@ -96,6 +92,7 @@ footer > a {
 }
 
 #reset-game-button {
+    margin: 10px auto;
     border: 2px solid rgb(170, 111, 0);
     background-color: rgb(65, 0, 65);
     color: orange;
@@ -136,7 +133,16 @@ footer > a {
     opacity: 1; /* Fully shown on mouse-over */
 }
 
+#audio {
+    margin: 10px auto;
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
 #audio-controls {
+    display: grid;
     margin-bottom: 10px;
 }
 

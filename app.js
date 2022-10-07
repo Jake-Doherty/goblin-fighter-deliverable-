@@ -15,14 +15,24 @@ const addCreatureForm = document.getElementById('add-creature-form');
 const removeDeadCreatureButton = document.getElementById('remove-dead-creatures-button');
 const enterDungeonButton = document.getElementById('enter-dungeon-button');
 const audioSlider = document.getElementById('slider');
+const playPauseAudioButton = document.getElementById('audio');
 const themeSong = new Audio('assets/theme-song.mp3');
 const creatureDeathSound = new Audio('assets/male_hurt7-48124.mp3');
 const enterDungeonSound = new Audio('assets/entered-dungeon-sound.mp3');
 
-/*  audio slider stuff  */
-themeSong.play();
-themeSong.loop = true;
-themeSong.volume = 0.15;
+/*  audio stuff  */
+
+playPauseAudioButton.addEventListener('click', async () => {
+    themeSong.loop = true;
+    themeSong.volume = 0.15;
+
+    if (themeSong.paused) {
+        themeSong.play();
+    } else {
+        themeSong.pause();
+    }
+});
+
 creatureDeathSound.volume = 0.05;
 enterDungeonSound.volume = 0.1;
 
