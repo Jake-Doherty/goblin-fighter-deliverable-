@@ -1,0 +1,287 @@
+header {
+    justify-content: center;
+}
+
+main {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+footer {
+    padding: 5px;
+    background-color: black;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    gap: 2px;
+}
+
+footer > a {
+    padding: 5px;
+    color: orange;
+    background-color: purple;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 6px 2px black;
+}
+
+::placeholder {
+    color: orange;
+    opacity: 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+#game-section {
+    width: fit-content;
+    padding: 10px;
+    background-color: black;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/*                                  player section styling                                   */
+#player-section {
+    height: fit-content;
+    width: 350px;
+    display: grid;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), purple);
+    justify-items: center;
+    border-radius: 5px;
+    gap: 5px;
+    box-shadow: inset 0px 0px 6px 2px black, 0px 0px 10px 1px whitesmoke;
+}
+
+#scores-results-container {
+    margin: 5px;
+    display: grid;
+}
+
+#scores-results-container p {
+    padding: 3px;
+    border-radius: 3px;
+    border: 5px solid black;
+    margin: 2px;
+    background-color: purple;
+    color: orange;
+    text-align: center;
+}
+
+#harry-potter-health-points {
+    padding: 3px;
+    border-radius: 3px;
+    border: 5px solid black;
+    margin: 5px;
+    background-color: purple;
+    color: orange;
+}
+
+#player-image {
+    margin-bottom: 10px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+#player-image:hover {
+    box-shadow: 2px 4px 5px 2px black;
+}
+
+#reset-game-button {
+    margin: 10px auto;
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
+#reset-game-button:hover {
+    border: 2px solid rgb(65, 0, 65);
+    background-color: rgb(170, 111, 0);
+    color: rgb(65, 0, 65);
+    box-shadow: 0px 0px 6px 2px black;
+    cursor: pointer;
+}
+
+#slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 5px; /* Specified height */
+    background: #474747; /* Grey background */
+    outline: none; /* Remove outline */
+    opacity: 0.5; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+    transition: opacity 0.2s;
+}
+
+#slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -2px;
+    width: 5px; /* Set a specific slider handle width */
+    height: 20px; /* Slider handle height */
+    background: rgb(170, 111, 0); /* orange button background */
+    cursor: pointer; /* Cursor on hover */
+}
+
+#slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+}
+
+#audio {
+    margin: 10px auto;
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
+#audio-controls {
+    display: grid;
+    margin-bottom: 10px;
+}
+
+/* creature section styling */
+#creature-section {
+    width: 350px;
+    display: grid;
+    gap: 5px;
+    grid-template-rows: auto 1fr;
+    background: linear-gradient(-135deg, rgba(0, 0, 0, 0.8), purple);
+    border-radius: 5px;
+    justify-items: center;
+    align-items: center;
+    box-shadow: inset 0px 0px 6px 2px black, 0px 0px 10px 1px whitesmoke;
+    overflow: auto;
+}
+
+label {
+    margin-top: 10px;
+    width: fit-content;
+    border-top: 2px solid rgb(170, 111, 0);
+    border-left: 2px solid rgb(170, 111, 0);
+    border-right: 2px solid rgb(170, 111, 0);
+    border-radius: 5px 5px 5px;
+    text-align: center;
+    color: rgb(170, 111, 0);
+    cursor: pointer;
+}
+
+#add-creature-form input {
+    background-color: rgb(65, 0, 65);
+    color: orange;
+}
+
+#add-creature-form button {
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
+#add-creature-form button:hover {
+    border: 2px solid rgb(65, 0, 65);
+    background-color: rgb(170, 111, 0);
+    color: rgb(65, 0, 65);
+    box-shadow: 0px 0px 6px 2px black;
+    cursor: pointer;
+}
+
+#add-creature-section {
+    margin-top: 5px;
+    display: grid;
+    gap: 5px;
+}
+
+#creature-container {
+    margin-bottom: 10px;
+    display: grid;
+    width: 80%;
+    gap: 5px;
+}
+
+#creature-container h3 {
+    margin: 0;
+    padding: 3px;
+    border-radius: 3px;
+    border: 5px solid black;
+    background-color: purple;
+    color: orange;
+    text-align: center;
+}
+
+#remove-dead-creatures-button {
+    width: 100%;
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
+#remove-dead-creatures-button:hover {
+    border: 2px solid rgb(65, 0, 65);
+    background-color: rgb(170, 111, 0);
+    color: rgb(65, 0, 65);
+    box-shadow: 0px 0px 6px 2px black;
+    cursor: pointer;
+}
+
+#enter-dungeon-button {
+    width: 200px;
+    border: 2px solid rgb(170, 111, 0);
+    background-color: rgb(65, 0, 65);
+    color: orange;
+    cursor: pointer;
+}
+
+#enter-dungeon-button:hover {
+    border: 2px solid rgb(65, 0, 65);
+    background-color: rgb(170, 111, 0);
+    color: rgb(65, 0, 65);
+    box-shadow: 0px 0px 6px 2px black;
+    cursor: pointer;
+}
+
+ul {
+    margin-left: 10px;
+    width: 100%;
+    display: grid;
+    gap: 5px;
+}
+
+.creature {
+    width: 100%;
+    height: 50px;
+    padding: 3px;
+    display: grid;
+    margin-left: -10px;
+    grid-template-columns: 1fr 1fr 100px;
+    background-color: rgba(245, 245, 245, 0.281);
+    border-radius: 5px;
+    justify-items: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+li:hover {
+    box-shadow: 0px 0px 5px 2px black;
+}
+
+li > span.health {
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 50%;
+    font-weight: bold;
+    text-align: center;
+}
+
+li > img {
+    width: 25px;
+}

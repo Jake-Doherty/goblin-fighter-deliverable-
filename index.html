@@ -1,39 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <!-- metadata -->
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-<head>
-    <!-- metadata -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- title and favicon -->
+        <title>Web App</title>
+        <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
 
-    <!-- title and favicon -->
-    <title>Web App</title>
-    <link rel="icon" type="image/x-icon" href="assets/alchemy-favicon.png" />
+        <!-- js -->
+        <script type="module" src="app.js"></script>
 
-    <!-- js -->
-    <script type="module" src="app.js"></script>
+        <!-- fonts -->
+        <!-- see https://fonts.google.com/ -->
 
-    <!-- fonts -->
-    <!-- see https://fonts.google.com/ -->
+        <!-- css -->
+        <link rel="stylesheet" href="styles/reset.css" />
+        <link rel="stylesheet" href="styles/global.css" />
+        <!-- add link for page specific css -->
+        <link rel="stylesheet" href="./styles/goblin-fighter.css" />
+    </head>
 
-    <!-- css -->
-    <link rel="stylesheet" href="styles/reset.css" />
-    <link rel="stylesheet" href="styles/global.css" />
-    <!-- add link for page specific css -->
+    <body>
+        <header>
+            <img class="logo" src="assets\Harry_Potter_wordmark.svg" alt="logo" />
+            <h1>Creature Crush</h1>
+        </header>
 
-</head>
-
-<body>
-    <header>
-        <img class="logo" src="assets/html_css_js.png" alt="logo">
-        <h1>Web App</h1>
-    </header>
-
-    <main>
-
-    </main>
-
-</body>
-
+        <main>
+            <section id="game-section">
+                <section id="player-section">
+                    <div id="scores-results-container">
+                        <p id="totals-score-message">
+                            You have crushed
+                            <span id="creatures-crushed">0</span>
+                            creatures!
+                        </p>
+                        <p>
+                            score:
+                            <span id="score">0</span>
+                        </p>
+                        <p id="battle-result-message"></p>
+                    </div>
+                    <p id="harry-potter-health-points">HPHP: <span id="hphp-span"></span></p>
+                    <img id="player-image" src="" alt="" />
+                    <form>
+                        <button id="reset-game-button">Reset Game?</button>
+                    </form>
+                    <div id="audio-controls">
+                        <input id="slider" type="range" />
+                        <button id="audio">Play/Pause Audio</button>
+                    </div>
+                </section>
+                <section id="creature-section">
+                    <div id="add-creature-section">
+                        <label>
+                            Build-a-Creature
+                            <form id="add-creature-form">
+                                <input
+                                    name="name"
+                                    type="text"
+                                    placeholder="Give your opponent a name"
+                                    required
+                                />
+                                <button>+</button>
+                            </form>
+                        </label>
+                        <button id="enter-dungeon-button">Enter Dungeon</button>
+                    </div>
+                    <div id="creature-container">
+                        <h3>Crush These Creatures!</h3>
+                        <button id="remove-dead-creatures-button">
+                            Remove Defeated Creatures?
+                        </button>
+                        <ul id="creatures-list"></ul>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <footer></footer>
+    </body>
 </html>
